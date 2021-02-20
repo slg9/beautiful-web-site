@@ -1,0 +1,6 @@
+.menu{
+    background-color: gray;
+    display: flex;
+    flex:1;
+    max-height: 50px;
+}

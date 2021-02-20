@@ -1,9 +1,14 @@
-import './App.css';
+import './app.css';
+import Menu from './components/menu/Menu';
+import Body from './components/body/Body';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      coucou
+    <div className="app">
+      <Menu/>
+      <Body/>
+      <Footer/>
     </div>
   );
 }
