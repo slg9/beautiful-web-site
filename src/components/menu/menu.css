@@ -1,6 +1,64 @@
-.menu{
-    background-color: gray;
+.menu {
+  background-color: rgb(177, 74, 74);
+  color: white;
+  display: flex;
+  flex: 1;
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.left {
+  display: flex;
+  flex: 0.7;
+  align-items: center;
+ 
+}
+
+.right {
+  display: flex;
+  flex: 0.3;
+  justify-content: space-around;
+  padding-right: 50px;
+  min-width: 300px;
+}
+
+.item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.item:hover {
+  border-bottom: 3px solid white;
+}
+.sign {
+  display: flex;
+  align-items: center;
+}
+.left__responsive,
+.right__responsive {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .left,
+  .right {
+    display: none;
+  }
+
+  .left__responsive {
     display: flex;
-    flex:1;
-    max-height: 50px;
+ 
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .right__responsive {
+    display: flex;
+    max-width: 100px;
+    margin-left: auto;
+    align-items: center;
+
+  }
 }

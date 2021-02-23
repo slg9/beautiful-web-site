@@ -1,17 +1,22 @@
 import React from "react";
-import { useSpring, animated } from "react-spring";
-import Logo from "../../assets/programming.svg";
+import {Button} from "@material-ui/core"
+import {PlayCircleOutline} from "@material-ui/icons"
+
 import "./body.css";
 
 function Body() {
-  const fadein = useSpring({ opacity: 1, from: { opacity: 0 } });
-  const growup = useSpring({ width: "100px", from: { width: "0px" } });
-  const progress = useSpring({ x: 100, from: { x: 0 } });
   return (
     <div className="body">
-      <animated.h1 style={fadein}>voici ma premiere animation</animated.h1>
-      <animated.img src={Logo} style={growup} />
-      <animated.span>{progress.x}</animated.span>
+      <div className="panel">
+        <div className="title">
+          <h1>ADVENTURE AWAITS</h1>
+          <h3>What are you waiting for ?</h3>
+          <div className="options">
+            <Button variant="outlined">GET STARTED</Button>
+            <Button variant="contained">WATCH TRAILER <PlayCircleOutline/></Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import './app.css';
-import Menu from './components/menu/Menu';
+import MenuApp from './components/menu/MenuApp';
 import Body from './components/body/Body';
 import Footer from './components/footer/Footer';
 
 function App() {
   return (
     <div className="app">
-      <Menu/>
+      <MenuApp/>
       <Body/>
       <Footer/>
     </div>
