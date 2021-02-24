@@ -5,48 +5,22 @@
     align-items: center;
 }
 
-.panel{
+.body__container{
     display: flex;
-    margin-left:-1vw;
-    padding:0;
-    height: 100vh;
+    padding: 20px;
     width: 100vw;
-    background-image: url("https://cdn.pixabay.com/photo/2015/09/09/16/05/forest-931706_960_720.jpg");
-    background-size: cover;
-    background-repeat: "no-repeat";
     justify-content: center;
     align-items: center;
+}
+.content{
+    display: flex;
+    gap:20px;
+    flex-direction: column;
     
 }
-.title{
+.row{
     display: flex;
-    flex-direction: column;
+    flex:1;
+    gap:20px;
     justify-content: center;
-    align-items: center;
-    color:white;
-    font-size: 60px;
 }
-.title>h3{
-   font-size: 40px;
-   margin-top: -50px;
-}
-.options{
-    display: flex;
-    min-width: 350px;
-    justify-content: space-around;
- 
-}
-
-@media screen and (max-width: 640px) {
-    h1{
-        font-size: 0.3em;
-    }
-    h3{
-        font-size: 0em;
-
-    }
-    .options{
-        flex-direction: column;
-    }
-  }
-  
