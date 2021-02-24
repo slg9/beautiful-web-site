@@ -1,5 +1,32 @@
 .footer{
     display: flex;
-    background-color: blueviolet;
-    min-height: 100px;
+    background-color: black;
+    color:white;
+    
+    width: 99vw;
+   
+    justify-content: center;
+}
+
+.footer__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60vw;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.footer__field{
+    display: flex;
+    justify-content: space-around;
+    min-width: 350px;
+    align-items: center;
+    margin-bottom: 50px;
+    
+}
+.field__left>input{
+    padding: 5px;
+    height:25px;
 }

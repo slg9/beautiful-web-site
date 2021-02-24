@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Panel from "./Panel";
 import Cards from "./Cards";
-
+import { Grid } from "@material-ui/core"
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import "./body.css";
 
 function Body() {
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+  const animations = {
+    "hidden": { scale: 0 },
+    "visible": { scale: 1, transition: { duration: 0.5 } }
+  }
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+    
+  }, [controls, inView])
   return (
     <div className="body">
       <Panel
@@ -15,46 +29,68 @@ function Body() {
         imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
       />
       <div className="body__container">
-        <div className="content">
-          <div className="row">
-            <Cards
-              name="Tour Eiffel"
-              imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-              categorie="ville"
-              description="magnifique ville a visiter"
-              classic={false}
-            />
-            <Cards
-              name="Tour Eiffel"
-              imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-              categorie="ville"
-              description="magnifique ville a visiter"
-              classic={false}
-            />
-          </div>
-          <div className="row">
-            <Cards
-              name="Tour Eiffel"
-              imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-              categorie="ville"
-              description="magnifique ville a visiter"
-              classic={true}
-            />
-            <Cards
-              name="Tour Eiffel"
-              imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-              categorie="ville"
-              description="magnifique ville a visiter"
-              classic={true}
-            />
-            <Cards
-              name="Tour Eiffel"
-              imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-              categorie="ville"
-              description="magnifique ville a visiter"
-              classic={true}
-            />
-          </div>
+        <div class="content">
+
+          <Grid container spacing={3}>
+
+            <Grid item xs={6}>
+              <motion.div ref={ref} variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+
+              </motion.div>
+            </Grid>
+            <Grid item xs={6}>
+              <motion.div variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+
+              </motion.div>
+            </Grid>
+            <Grid item xs={4}>
+              <motion.div  variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+
+              </motion.div>
+            </Grid>
+            <Grid item xs={4}>
+              <motion.div  variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+
+              </motion.div>
+            </Grid>
+            <Grid item xs={4}>
+              <motion.div  variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+
+              </motion.div>
+            </Grid>
+
+
+          </Grid>
         </div>
       </div>
     </div>

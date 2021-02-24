@@ -1,26 +1,21 @@
 .body{
     display: flex;
-    flex:1;
+    width: 99vw;
     flex-direction: column;
     align-items: center;
+ 
 }
 
 .body__container{
     display: flex;
     padding: 20px;
-    width: 100vw;
+    flex:1;
     justify-content: center;
     align-items: center;
-}
-.content{
-    display: flex;
-    gap:20px;
-    flex-direction: column;
     
 }
-.row{
-    display: flex;
-    flex:1;
-    gap:20px;
-    justify-content: center;
+.content{
+    
+    width: 80vw;
+    
 }

@@ -9,20 +9,20 @@ import {
 import React from "react";
 import { motion } from "framer-motion";
 import "./cards.css";
-function Cards({ name, imageURL, categorie, description, classic }) {
+function Cards({ name, imageURL, categorie, description }) {
   return (
     <div className="card">
       <Box boxShadow={3} style={{borderRadius:"30px"}}>
         <Card style={{borderRadius:"30px"}}>
           <CardActionArea>
             <motion.div
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.05,opacity:0.8 }}
               transition={{ damping: 2000 }}
             >
               <CardMedia
                 component="img"
                 alt={name}
-                style={{ width: classic ? "400px" : "600px", height: "250px" }}
+                style={{ width: "100%", height: "250px" }}
                 image={imageURL}
                 title={name}
               />
