@@ -23,11 +23,13 @@ function MenuApp() {
   const scale = {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
+  
   return (
     <div className="menu__container">
       <motion.div
         className="menuresponsive"
         initial={false}
+        
         variants={animation2}
         animate={isResponsive ? "open" : "closed"}
       >
@@ -139,6 +141,9 @@ function MenuApp() {
             onClick={onResponsive}
             variants={scale}
             whileHover="scale"
+            initial={{ opacity: 0, x: "100%" ,rotate:90}}
+            animate={{ opacity: 1, x: 0 ,rotate:0}}
+            transition={{ duration: 0.5 }}
           >
             {isResponsive ? (
               <Close fontSize="large" cursor="pointer" />

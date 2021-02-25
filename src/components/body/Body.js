@@ -37,9 +37,9 @@ function Body() {
       <div className="body__container">
         <div class="content">
            
-          <Grid container spacing={3}>
+          <Grid container spacing={6}>
 
-            <Grid item sm={6} xs={12}>
+            <Grid item lg={6} md={12}>
               <motion.div ref={ref} variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -47,10 +47,9 @@ function Body() {
                   categorie="ville"
                   description="magnifique ville a visiter"
                 />
-
               </motion.div>
             </Grid>
-            <Grid item sm={6} xs={12}>
+            <Grid item lg={6} md={12}>
               <motion.div variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -58,10 +57,19 @@ function Body() {
                   categorie="ville"
                   description="magnifique ville a visiter"
                 />
-
               </motion.div>
             </Grid>
-            <Grid item sm={4} xs={12}>
+            <Grid item lg={4} md={6}>
+              <motion.div variants={animations} initial="hidden" animate={controls}>
+                <Cards
+                  name="Tour Eiffel"
+                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
+                  categorie="ville"
+                  description="magnifique ville a visiter"
+                />
+              </motion.div>
+            </Grid>
+            <Grid item lg={4} md={6}>
               <motion.div  variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -69,29 +77,6 @@ function Body() {
                   categorie="ville"
                   description="magnifique ville a visiter"
                 />
-
-              </motion.div>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <motion.div  variants={animations} initial="hidden" animate={controls}>
-                <Cards
-                  name="Tour Eiffel"
-                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-                  categorie="ville"
-                  description="magnifique ville a visiter"
-                />
-
-              </motion.div>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <motion.div  variants={animations} initial="hidden" animate={controls}>
-                <Cards
-                  name="Tour Eiffel"
-                  imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
-                  categorie="ville"
-                  description="magnifique ville a visiter"
-                />
-
               </motion.div>
             </Grid>
 

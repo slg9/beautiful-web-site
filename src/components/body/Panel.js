@@ -5,7 +5,7 @@ import { motion ,useViewportScroll,useTransform,useSpring} from "framer-motion";
 import "./panel.css";
 function Panel({ title, subtitle, button1, button2, imageURL }) {
   const {scrollYProgress} = useViewportScroll();
-  const scale = useTransform(scrollYProgress,[0,0.5,1],[1,1.3,1]);
+  const scale = useTransform(scrollYProgress,[0,0.5],[1,2]);
   
   const smoothScale = useSpring(scale,{damping:20});
   return (

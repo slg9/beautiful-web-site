@@ -7,11 +7,14 @@ import {
   Box,
 } from "@material-ui/core";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useViewportScroll,useTransform,useSpring } from "framer-motion";
 import "./cards.css";
 function Cards({ name, imageURL, categorie, description }) {
+  const {scrollYProgress} = useViewportScroll();
+  const scaleY = useTransform(scrollYProgress,[0,0.7],[0.8,1]);
+  const smoothScaleY = useSpring(scaleY,{stiffness:20});
   return (
-    <motion.div className="card">
+    <motion.div style={{scale:smoothScaleY}} className="card">
       <Box boxShadow={3} style={{ borderRadius: "30px" }}>
         <Card style={{ borderRadius: "30px" }}>
           <CardActionArea>

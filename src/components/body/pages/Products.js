@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
 import Panel from "../Panel";
 import Cards from "../Cards";
-import { Grid } from "@material-ui/core"
-import { motion, useAnimation } from "framer-motion";
+import { Grid } from "@material-ui/core";
+import {
+  motion,
+  useAnimation,
+  useViewportScroll,
+  useTransform,
+} from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-function Services() {
+function Products() {
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animations = {
@@ -18,14 +23,14 @@ function Services() {
     }
   }, [controls, inView]);
   useEffect(() => {
-    window.scrollTo(1500,0);
-  }, [])
+    window.scrollTo(1500, 0);
+  }, []);
   return (
     <div className="body">
       <Panel
-        title="Services"
-        subtitle="Nos services !"
-        imageURL="https://cdn.pixabay.com/photo/2020/12/15/13/44/children-5833685_960_720.jpg"
+        title="Products"
+        subtitle="Nos produits !"
+        imageURL="https://cdn.pixabay.com/photo/2015/09/09/16/05/forest-931706_960_720.jpg"
       />
       <div className="body__container">
         <div class="content">
@@ -38,14 +43,13 @@ function Services() {
                 animate={controls}
               >
                 <Cards
-                  name="Pyramide"
-                  imageURL="https://cdn.pixabay.com/photo/2017/06/04/16/33/pyramids-2371501_960_720.jpg"
-                  categorie="ville"
-                  description="magnifique ville a visiter"
+                  name="Chausures"
+                  imageURL="https://cdn.pixabay.com/photo/2016/01/19/18/06/brown-shoes-1150071_960_720.jpg"
+                  categorie="Vetements"
+                  description="magnifique paire de chaussures"
                 />
               </motion.div>
             </Grid>
-            
           </Grid>
         </div>
       </div>
@@ -53,4 +57,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default Products;
