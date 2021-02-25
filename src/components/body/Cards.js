@@ -4,29 +4,31 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  Box
+  Box,
 } from "@material-ui/core";
 import React from "react";
 import { motion } from "framer-motion";
 import "./cards.css";
 function Cards({ name, imageURL, categorie, description }) {
   return (
-    <div className="card">
-      <Box boxShadow={3} style={{borderRadius:"30px"}}>
-        <Card style={{borderRadius:"30px"}}>
+    <motion.div className="card">
+      <Box boxShadow={3} style={{ borderRadius: "30px" }}>
+        <Card style={{ borderRadius: "30px" }}>
           <CardActionArea>
-            <motion.div
-              whileHover={{ scale: 1.05,opacity:0.8 }}
-              transition={{ damping: 2000 }}
-            >
-              <CardMedia
-                component="img"
-                alt={name}
-                style={{ width: "100%", height: "250px" }}
-                image={imageURL}
-                title={name}
-              />
-            </motion.div>
+            <div style={{ overflow: "hidden" }}>
+              <motion.div
+                whileHover={{ scale: 1.05, opacity: 0.8 }}
+                transition={{ damping: 2000 }}
+              >
+                <CardMedia
+                  component="img"
+                  alt={name}
+                  style={{ width: "100%", height: "250px" }}
+                  image={imageURL}
+                  title={name}
+                />
+              </motion.div>
+            </div>
             <div className="info">{categorie}</div>
           </CardActionArea>
           <CardContent>
@@ -39,7 +41,7 @@ function Cards({ name, imageURL, categorie, description }) {
           </CardContent>
         </Card>
       </Box>
-    </div>
+    </motion.div>
   );
 }
 

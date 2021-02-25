@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import Panel from "./Panel";
 import Cards from "./Cards";
 import { Grid } from "@material-ui/core"
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation , useViewportScroll,useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
 import "./body.css";
 
 function Body() {
+
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animations = {
@@ -19,6 +21,10 @@ function Body() {
     }
     
   }, [controls, inView])
+
+  useEffect(() => {
+    window.scrollTo(1500,0);
+  }, [])
   return (
     <div className="body">
       <Panel
@@ -30,10 +36,10 @@ function Body() {
       />
       <div className="body__container">
         <div class="content">
-
+           
           <Grid container spacing={3}>
 
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <motion.div ref={ref} variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -44,7 +50,7 @@ function Body() {
 
               </motion.div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={6} xs={12}>
               <motion.div variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -55,7 +61,7 @@ function Body() {
 
               </motion.div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <motion.div  variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -66,7 +72,7 @@ function Body() {
 
               </motion.div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <motion.div  variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"
@@ -77,7 +83,7 @@ function Body() {
 
               </motion.div>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4} xs={12}>
               <motion.div  variants={animations} initial="hidden" animate={controls}>
                 <Cards
                   name="Tour Eiffel"

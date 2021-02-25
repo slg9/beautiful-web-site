@@ -1,15 +1,24 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import { PlayCircleOutline } from "@material-ui/icons";
-import { motion } from "framer-motion";
+import { motion ,useViewportScroll,useTransform,useSpring} from "framer-motion";
 import "./panel.css";
 function Panel({ title, subtitle, button1, button2, imageURL }) {
+  const {scrollYProgress} = useViewportScroll();
+  const scale = useTransform(scrollYProgress,[0,0.5,1],[1,1.3,1]);
+  
+  const smoothScale = useSpring(scale,{damping:20});
   return (
-    <div className="panel" style={{ backgroundImage: `url(${imageURL})` }}>
+    <div className="panel__container">
+    <motion.div className="panel" style={{ scale:smoothScale,backgroundImage: `url(${imageURL})` }}>
       <div className="title">
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-        <div className="options">
+        <motion.h1 animate={{scale:[0,1],transition:{delay:0.1}}}>{title}</motion.h1>
+        <motion.p animate={{scale:[0,1],transition:{delay:0.4}}}>{subtitle}</motion.p>
+        <motion.div
+          className="options"
+          animate={{ scale: [0,1.3,1] }}
+          transition={{ duration: 0.8 ,transition:{delay:0.8}}}
+        >
           {button1 && (
             <motion.div
               className="option__field"
@@ -41,8 +50,9 @@ function Panel({ title, subtitle, button1, button2, imageURL }) {
               </Button>
             </motion.div>
           )}
-        </div>
+        </motion.div>
       </div>
+    </motion.div>
     </div>
   );
 }

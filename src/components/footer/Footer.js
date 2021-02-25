@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div className="footer">
             <div class="footer__content">
-                <h2>Join the adventure news letter to receive our best vacacions deals</h2>
+                <h3>Join the adventure news letter to receive our best vacacions deals</h3>
                 <p>You can unsubscribe at any time</p>
                 <div class="footer__field">
                     <div class="field__left">
@@ -19,7 +19,7 @@ function Footer() {
                 <Grid container spacing={3} >
                     <Grid item xs={3}>
                         <div class="footer__details">
-                            <h2>About us</h2>
+                            <h3>About us</h3>
                             <p>How it works</p>
                             <p>Testimonials</p>
                             <p>Careers</p>
@@ -29,7 +29,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={3}>
                         <div class="footer__details">
-                            <h2>Contact us</h2>
+                            <h3>Contact us</h3>
                             <p>Contact</p>
                             <p>Support</p>
                             <p>Destinations</p>
@@ -39,7 +39,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={3}>
                         <div class="footer__details">
-                            <h2>Videos</h2>
+                            <h3>Videos</h3>
                             <p>Submit video</p>
                             <p>Ambassador</p>
                             <p>Agency</p>
@@ -49,7 +49,7 @@ function Footer() {
                     </Grid>
                     <Grid item xs={3}>
                         <div class="footer__details">
-                            <h2>Social Media</h2>
+                            <h3>Social Media</h3>
                             <p>Instagram</p>
                             <p>Facebook</p>
                             <p>Youtube</p>
