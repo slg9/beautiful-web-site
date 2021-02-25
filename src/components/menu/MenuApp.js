@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Link,useHistory } from "react-router-dom";
 import { Button} from "@material-ui/core";
 import { Menu, Close } from "@material-ui/icons";
@@ -23,6 +23,24 @@ function MenuApp() {
   const scale = {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
+  useEffect(() => {
+    history.listen((location)=>{
+      switch(location.pathname){
+
+        case "/services":
+          console.log("animation Services menu");
+          
+          break;
+        case "/products":
+          console.log("animation Products menu");
+          break;
+        default :
+          console.log("animation HOME menu");
+          break;
+
+      }
+    })
+  }, [history])
   
   return (
     <div className="menu__container">
@@ -80,7 +98,9 @@ function MenuApp() {
           </Link>
         </div>
         <div className="right">
-        
+        {/* <svg height="210" width="500">
+  <line x1="0" y1="0" x2="200" y2="0" style={{stroke:"white",strokeWidth:"2"}} />
+ </svg> */}
           <motion.div
             className="item"
             whileHover="scale"

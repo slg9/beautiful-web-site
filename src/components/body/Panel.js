@@ -5,19 +5,20 @@ import { motion ,useViewportScroll,useTransform,useSpring} from "framer-motion";
 import "./panel.css";
 function Panel({ title, subtitle, button1, button2, imageURL }) {
   const {scrollYProgress} = useViewportScroll();
-  const scale = useTransform(scrollYProgress,[0,0.5],[1,2]);
+  const scale = useTransform(scrollYProgress,[0,0.5],[1,1.2]);
   
-  const smoothScale = useSpring(scale,{damping:20});
+  const smoothScale = useSpring(scale,{duration:0.5});
   return (
     <div className="panel__container">
     <motion.div className="panel" style={{ scale:smoothScale,backgroundImage: `url(${imageURL})` }}>
       <div className="title">
-        <motion.h1 animate={{scale:[0,1],transition:{delay:0.1}}}>{title}</motion.h1>
-        <motion.p animate={{scale:[0,1],transition:{delay:0.4}}}>{subtitle}</motion.p>
+        <motion.h1 initial={{scale:0}} animate={{scale:[0,1],transition:{delay:0.1}}}>{title}</motion.h1>
+        <motion.p initial={{scale:0}} animate={{scale:[0,1],transition:{delay:0.4}}}>{subtitle}</motion.p>
         <motion.div
           className="options"
+          initial={{scale:0}}
           animate={{ scale: [0,1.3,1] }}
-          transition={{ duration: 0.8 ,transition:{delay:0.8}}}
+          transition={{ duration: 1.5,delay:0.6}}
         >
           {button1 && (
             <motion.div
