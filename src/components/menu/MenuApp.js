@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import { Menu, Close } from "@material-ui/icons";
-import { motion ,useAnimation} from "framer-motion";
+import { Button, IconButton } from "@material-ui/core";
+import { Menu, Close, ExpandLess } from "@material-ui/icons";
+import {
+  motion,
+  useAnimation,
+  useViewportScroll,
+  useTransform,
+  useSpring
+} from "framer-motion";
 import "./menu.css";
 
 function MenuApp() {
   const [isResponsive, setIsResponsive] = useState(false);
-  const [currentMenu,setCurrentMenu]=useState("/");
-  const [currentMenuSvgX,setCurrentMenuSvgX]=useState({x1:0,x2:120});
   const history = useHistory();
   const control = useAnimation();
+  const { scrollYProgress } = useViewportScroll();
+  const visible = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+  const smoothVisible = useSpring(visible,{type:"spring",stiffness:400,damping:40});
   const onResponsive = () => {
     setIsResponsive(!isResponsive);
   };
@@ -26,30 +33,32 @@ function MenuApp() {
   const scale = {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
-  const updateMenu =(pathname)=>{
-      let x1=0,x2=120;
-      switch (pathname) {
-        case "/services":
-          x1=120;x2=240; 
-          break;           
-        case "/products":
-          x1=240;x2=360;
-          break;
-        default:
-          break;
-      }
-      setCurrentMenuSvgX({x1,x2});
-      control.start({ scale: 1,opacity:[0.5,1],x1,x2});
-  }
-  useEffect(()=>{
+  const updateMenu = (pathname) => {
+    let x1 = 0,
+      x2 = 120;
+    switch (pathname) {
+      case "/services":
+        x1 = 120;
+        x2 = 240;
+        break;
+      case "/products":
+        x1 = 240;
+        x2 = 360;
+        break;
+      default:
+        break;
+    }
+    control.start({ scale: 1, opacity: [0.5, 1], x1, x2 ,transition:{delay:0.2}});
+  };
+  useEffect(() => {
     updateMenu(history.location.pathname);
-  },[])
-  
+  }, []);
+
   useEffect(() => {
     history.listen((location) => {
       updateMenu(location.pathname);
     });
-  }, [history]);
+  }, [history.location]);
 
   return (
     <div className="menu__container">
@@ -98,7 +107,6 @@ function MenuApp() {
           </motion.div>
         </div>
       </motion.div>
-
       <div className="menu">
         <div className="left">
           <Link to="/">
@@ -130,20 +138,21 @@ function MenuApp() {
         </div>
         <div className="right">
           <div className="menu__tile">
-            <div
+            <motion.div
               className="item"
-              whileHover="scale"
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               onClick={() => {
                 history.push("/");
               }}
             >
               HOME
-            </div>
+            </motion.div>
 
-            <div
+            <motion.div
               className="item"
-              whileHover="scale"
-              variants={animation}
+    
               initial={{ opacity: 0, y: "-100%" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -152,11 +161,10 @@ function MenuApp() {
               }}
             >
               SERVICES
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className="item"
-              whileHover="scale"
-              variants={animation}
+       
               initial={{ opacity: 0, y: "-100%" }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -165,32 +173,29 @@ function MenuApp() {
               }}
             >
               PRODUCTS
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className="sign"
               whileHover={{ scale: 1.1 }}
-              initial={{ opacity: 0, y: "-100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 ,delay:0.5}}
             >
-              <Button
-                variant="contained"
-                size="medium"
-              >
+              <Button variant="contained" size="medium">
                 SIGN UP
               </Button>
-            </div>
+            </motion.div>
           </div>
           <div className="menu__underline">
-            <svg height="1" width="350" >
+            <svg height="1" width="350">
               <motion.line
-                initial={{scale:0}}
+                initial={{ scale: 0 }}
                 y1="1"
                 y2="1"
-                style={{ stroke: "white" ,strokeWidth:"2"}}
+                style={{ stroke: "white", strokeWidth: "2" }}
                 animate={control}
                 variants={animation}
-                transition={{stiffness:2000}}
+                transition={{ stiffness: 2000 }}
               />
             </svg>
           </div>
@@ -212,6 +217,18 @@ function MenuApp() {
           </motion.div>
         </div>
       </div>
+      <motion.div
+        className="scrollup"
+        style={{ scale: smoothVisible,border:"1px solid gray" ,backgroundColor:"rgba(255, 255, 255, 0.8)",borderRadius:"50%"}}
+        animate={{ y: -2}}
+        transition={{ type:"spring",stiffness:1500,repeat: Infinity, repeatDelay: 0.2 }}
+        onClick={()=>{window.scrollTo(1500,0)}}
+      >
+        <IconButton >
+          <ExpandLess  />
+        </IconButton>
+      </motion.div>
+      coucou
     </div>
   );
 }

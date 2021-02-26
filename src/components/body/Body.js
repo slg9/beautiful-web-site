@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import Panel from "./Panel";
 import Cards from "./Cards";
-import { Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 import { motion, useAnimation , useViewportScroll,useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import "./body.css";
 
 function Body() {
-
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animations = {
@@ -32,8 +32,9 @@ function Body() {
         subtitle="What are you waiting for ?"
         button1={{ name: "GET STARTED" }}
         button2={{ name: "WATCH TRAILER" }}
-        imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
-      />
+        //imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
+        videoURL="https://vimeo.com/user88793510/review/517140552/9311d520d9"
+     />
       <div className="body__container">
         <div class="content">
            

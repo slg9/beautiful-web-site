@@ -6,15 +6,18 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import React from "react";
+import React,{useState} from "react";
 import { motion, useViewportScroll,useTransform,useSpring } from "framer-motion";
 import "./cards.css";
+import PageItem from "./pages/PageItem";
 function Cards({ name, imageURL, categorie, description }) {
+  const [isOpen,setIsOpen]=useState(false);
   const {scrollYProgress} = useViewportScroll();
   const scaleY = useTransform(scrollYProgress,[0,0.7],[0.8,1]);
   const smoothScaleY = useSpring(scaleY,{stiffness:20});
   return (
-    <motion.div style={{scale:smoothScaleY}} className="card">
+    <>
+    <motion.div style={{scale:smoothScaleY}} className="card" onClick={()=>{setIsOpen(true)}}>
       <Box boxShadow={3} style={{ borderRadius: "30px" }}>
         <Card style={{ borderRadius: "30px" }}>
           <CardActionArea>
@@ -45,6 +48,10 @@ function Cards({ name, imageURL, categorie, description }) {
         </Card>
       </Box>
     </motion.div>
+    {isOpen &&
+      <PageItem imageURL={imageURL} details={description} setIsOpen={setIsOpen}/>
+    }
+    </>
   );
 }
 
