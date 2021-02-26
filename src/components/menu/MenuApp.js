@@ -1,13 +1,16 @@
-import React, { useState ,useEffect} from "react";
-import { Link,useHistory } from "react-router-dom";
-import { Button} from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 import { Menu, Close } from "@material-ui/icons";
-import { motion } from "framer-motion";
+import { motion ,useAnimation} from "framer-motion";
 import "./menu.css";
 
 function MenuApp() {
   const [isResponsive, setIsResponsive] = useState(false);
+  const [currentMenu,setCurrentMenu]=useState("/");
+  const [currentMenuSvgX,setCurrentMenuSvgX]=useState({x1:0,x2:120});
   const history = useHistory();
+  const control = useAnimation();
   const onResponsive = () => {
     setIsResponsive(!isResponsive);
   };
@@ -23,43 +26,71 @@ function MenuApp() {
   const scale = {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
-  useEffect(() => {
-    history.listen((location)=>{
-      switch(location.pathname){
-
+  const updateMenu =(pathname)=>{
+      let x1=0,x2=120;
+      switch (pathname) {
         case "/services":
-          console.log("animation Services menu");
-          
-          break;
+          x1=120;x2=240; 
+          break;           
         case "/products":
-          console.log("animation Products menu");
+          x1=240;x2=360;
           break;
-        default :
-          console.log("animation HOME menu");
+        default:
           break;
-
       }
-    })
-  }, [history])
+      setCurrentMenuSvgX({x1,x2});
+      control.start({ scale: 1,opacity:[0.5,1],x1,x2});
+  }
+  useEffect(()=>{
+    updateMenu(history.location.pathname);
+  },[])
   
+  useEffect(() => {
+    history.listen((location) => {
+      updateMenu(location.pathname);
+    });
+  }, [history]);
+
   return (
     <div className="menu__container">
       <motion.div
         className="menuresponsive"
         initial={false}
-        
         variants={animation2}
         animate={isResponsive ? "open" : "closed"}
       >
-       
         <div className="containerResponsive">
-          <motion.div className="field" variants={scale} whileHover="scale" onClick={()=>{history.push("/");setIsResponsive(false);}}>
+          <motion.div
+            className="field"
+            variants={scale}
+            whileHover="scale"
+            onClick={() => {
+              history.push("/");
+              setIsResponsive(false);
+            }}
+          >
             HOME
           </motion.div>
-          <motion.div className="field" variants={scale} whileHover="scale" onClick={()=>{history.push("/services");setIsResponsive(false);}}>
+          <motion.div
+            className="field"
+            variants={scale}
+            whileHover="scale"
+            onClick={() => {
+              history.push("/services");
+              setIsResponsive(false);
+            }}
+          >
             SERVICE
           </motion.div>
-          <motion.div className="field" variants={scale} whileHover="scale" onClick={()=>{history.push("/products");setIsResponsive(false);}}>
+          <motion.div
+            className="field"
+            variants={scale}
+            whileHover="scale"
+            onClick={() => {
+              history.push("/products");
+              setIsResponsive(false);
+            }}
+          >
             PRODUCTS
           </motion.div>
           <motion.div className="field" variants={scale} whileHover="scale">
@@ -74,14 +105,14 @@ function MenuApp() {
             <motion.svg
               id="Capa_1"
               enable-background="new 0 0 512 512"
-              height="56"
+              height="30"
               viewBox="0 0 512 512"
-              width="100"
+              width="40"
               xmlns="http://www.w3.org/2000/svg"
               initial={{ opacity: 0, x: "-100%" }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.01 }}
               cursor="pointer"
             >
               <path
@@ -98,71 +129,79 @@ function MenuApp() {
           </Link>
         </div>
         <div className="right">
-        {/* <svg height="210" width="500">
-  <line x1="0" y1="0" x2="200" y2="0" style={{stroke:"white",strokeWidth:"2"}} />
- </svg> */}
-          <motion.div
-            className="item"
-            whileHover="scale"
-            variants={animation}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            onClick={()=>{history.push("/")}}
-            
-          >
-      
-              HOME
-              
-
-            
-          </motion.div>
-          
-          <motion.div
-            className="item"
-            whileHover="scale"
-            variants={animation}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            onClick={()=>{history.push("/services")}}
-          >
-            SERVICES
-          </motion.div>
-          <motion.div
-            className="item"
-            whileHover="scale"
-            variants={animation}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            onClick={()=>{history.push("/products")}}
-          >
-            PRODUCTS
-          </motion.div>
-          <motion.div
-            className="sign"
-            whileHover={{ scale: 1.1 }}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Button
-              variant="outlined"
-              style={{ color: "white", border: "1px solid white" }}
-
+          <div className="menu__tile">
+            <div
+              className="item"
+              whileHover="scale"
+              onClick={() => {
+                history.push("/");
+              }}
             >
-              SIGN UP
-            </Button>
-          </motion.div>
+              HOME
+            </div>
+
+            <div
+              className="item"
+              whileHover="scale"
+              variants={animation}
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              onClick={() => {
+                history.push("/services");
+              }}
+            >
+              SERVICES
+            </div>
+            <div
+              className="item"
+              whileHover="scale"
+              variants={animation}
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              onClick={() => {
+                history.push("/products");
+              }}
+            >
+              PRODUCTS
+            </div>
+            <div
+              className="sign"
+              whileHover={{ scale: 1.1 }}
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button
+                variant="contained"
+                size="medium"
+              >
+                SIGN UP
+              </Button>
+            </div>
+          </div>
+          <div className="menu__underline">
+            <svg height="1" width="350" >
+              <motion.line
+                initial={{scale:0}}
+                y1="1"
+                y2="1"
+                style={{ stroke: "white" ,strokeWidth:"2"}}
+                animate={control}
+                variants={animation}
+                transition={{stiffness:2000}}
+              />
+            </svg>
+          </div>
         </div>
         <div className="right__responsive">
           <motion.div
             onClick={onResponsive}
             variants={scale}
             whileHover="scale"
-            initial={{ opacity: 0, x: "100%" ,rotate:90}}
-            animate={{ opacity: 1, x: 0 ,rotate:0}}
+            initial={{ opacity: 0, x: "100%", rotate: 90 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.5 }}
           >
             {isResponsive ? (
