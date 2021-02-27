@@ -25,7 +25,6 @@ function PageItem({ imageURL, details ,setIsOpen}) {
             animate="imageDeZoom"
             variants={animations}
             src={imageURL}
-            
           />
         </div>
         <div className="page__item__content__middle">

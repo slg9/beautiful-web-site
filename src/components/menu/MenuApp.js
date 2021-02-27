@@ -195,7 +195,6 @@ function MenuApp() {
                 style={{ stroke: "white", strokeWidth: "2" }}
                 animate={control}
                 variants={animation}
-                transition={{ stiffness: 2000 }}
               />
             </svg>
           </div>

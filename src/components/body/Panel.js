@@ -7,27 +7,53 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
+import ReactPlayer from "react-player";
 import "./panel.css";
-function Panel({ title, subtitle, button1, button2, imageURL,videoURL }) {
+function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
   const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1.2]);
 
   const smoothScale = useSpring(scale, { duration: 0.5 });
   return (
     <div className="panel__container">
       {/* <motion.div className="panel" style={{ scale:smoothScale,backgroundImage: `url(${imageURL})` }}> */}
-      <motion.div className="panel" style={{ scale: smoothScale,backgroundImage: `url(${imageURL})` }}>
-        {videoURL && 
+      <motion.div
+        className="panel"
+        style={{ scale: smoothScale, backgroundImage: `url(${imageURL})` }}
+      >
+        {videoURL && (
+          /*
         <video
         id="background-video"
         loop
         autoPlay
-        style={{ zIndex: -1, position: "absolute" }}
+        muted
+        className="videoStyle"
+       
       >
         <source src={videoURL} type="video/mp4" />
-      </video>
-        }
-        
+      </video> */
+          <div
+            className="framer__container"
+            style={{
+              position: "absolute",
+              zIndex: "-1",
+              width: "100%",
+              height: "100%",
+              
+            }}
+          >
+            <iframe
+              src={videoURL}
+ 
+              className="video__frame"
+              frameborder="0"
+              allow="loop;muted;autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+
         <div className="title">
           <motion.h1
             initial={{ scale: 0 }}
