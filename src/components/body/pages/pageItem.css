@@ -50,15 +50,16 @@
    
 }
 .toggle{
-    position:fixed;
-    margin-top:-450px;
-    margin-right: -200px;
+    flex-direction: column;
+    display: flex;
+    height: fit-content;
+    justify-content: flex-start;
+    padding: 15px;
 }
 
 @media screen and (max-width:650px){
     .toggle{
-        margin-right: -10px;
-        margin-top:-150px;
+        position:absolute;
     }
     
 .page__item__content{

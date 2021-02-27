@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Button } from "@material-ui/core";
 import { PlayCircleOutline } from "@material-ui/icons";
 import {
@@ -7,9 +7,10 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-import ReactPlayer from "react-player";
+import PageItem from "./pages/PageItem"
 import "./panel.css";
 function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
+  const [isOpen,setIsOpen] = useState(false);
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1.2]);
 
@@ -44,7 +45,7 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
             }}
           >
             <iframe
-              src={videoURL}
+              src={`${videoURL}&mute=1&controls=0`}
  
               className="video__frame"
               frameborder="0"
@@ -99,6 +100,7 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
                   variant="contained"
                   style={{ backgroundColor: "white" }}
                   endIcon={<PlayCircleOutline />}
+                  onClick={()=>{setIsOpen(true)}}
                 >
                   {button2.name}
                 </Button>
@@ -107,6 +109,12 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
           </motion.div>
         </div>
       </motion.div>
+      {isOpen && (
+        <PageItem
+          videoURL={videoURL}
+          setIsOpen={setIsOpen}
+        />
+      )}
     </div>
   );
 }

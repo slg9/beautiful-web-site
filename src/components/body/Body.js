@@ -17,12 +17,12 @@ function Body() {
   return (
     <div className="body">
       <Panel
-        title="Welcome to my website"
+        title="Bienvenue sur mon site"
         subtitle=""
-        button1={{ name: "GET STARTED" }}
-        button2={{ name: "WATCH TRAILER" }}
+        //button1={{ name: "GET STARTED" }}
+        button2={{ name: "VOIR VIDEO" }}
         //imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
-        videoURL="https://www.youtube.com/embed/BHACKCNDMW8?autoplay=1&controls=0&showinfo=0&autohide=1&mute=1&start=3"
+        videoURL="https://www.youtube.com/embed/BHACKCNDMW8?autoplay=1&showinfo=0&autohide=1&start=5"
      />
       <div className="body__container">
         <div className="content">
