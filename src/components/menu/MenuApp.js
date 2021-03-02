@@ -204,7 +204,7 @@ function MenuApp() {
             onClick={onResponsive}
             variants={scale}
             whileHover="scale"
-            initial={{ opacity: 0, x: "100%", rotate: 90 }}
+            initial={{ opacity: 0, x: "100%", rotate: 80 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.5 }}
           >
