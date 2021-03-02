@@ -35,7 +35,7 @@ function Body() {
                   name="Tour Eiffel"
                   imageURL="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_960_720.jpg"
                   categorie="ville"
-                  description="magnifique ville a visiter"
+                  description="magnifique ville a visiter les gars"
                 />
               </motion.div>
             </Grid>
