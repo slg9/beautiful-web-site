@@ -22,7 +22,7 @@ function Cards({ name, imageURL, categorie, description }) {
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animations = {
-    hidden: { scale: 0,rotate:90 },
+    hidden: { scale: 0,rotate:25 },
     visible: { scale: 1,rotate:0, transition: { type:"spring",stiffness:50 } },
   };
   useEffect(() => {

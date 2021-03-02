@@ -34,16 +34,16 @@ function MenuApp() {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
   const updateMenu = (pathname) => {
-    let x1 = 0,
-      x2 = 135;
+    let x1 = "0vw",
+      x2 = "9.1vw";
     switch (pathname) {
       case "/services":
-        x1 = 135;
-        x2 = 270;
+        x1 = "9.3vw";
+        x2 = "18.5vw";
         break;
       case "/products":
-        x1 = 270;
-        x2 = 405;
+        x1 = "18.8vw";
+        x2 = "27.9vw";
         break;
       default:
         break;
@@ -186,8 +186,8 @@ function MenuApp() {
               </Button>
             </motion.div>
           </div>
-          <div className="menu__underline">
-            <svg height="1" width="90%">
+          <div className="menu__underline" >
+            <svg height="1" width="90%" style={{position:"absolute"}}>
               <motion.line
                 initial={{ scale: 0 }}
                 y1="1"

@@ -50,13 +50,11 @@
    
 }
 .toggle{
-    position:absolute;
+    position: absolute;
+    
 }
 
 @media screen and (max-width:650px){
-    .toggle{
-        position:absolute;
-    }
     
 .page__item__content{
     flex-direction: column;
