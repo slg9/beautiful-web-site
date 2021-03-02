@@ -17,7 +17,7 @@ function Body() {
   return (
     <div className="body">
       <Panel
-        title="Bienvenue sur mon site"
+        title="Bienvenue sur mon super site !"
         subtitle=""
         //button1={{ name: "GET STARTED" }}
         button2={{ name: "VOIR VIDEO" }}

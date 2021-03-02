@@ -17,7 +17,7 @@ jobs:
       - name: docker build
         run : docker build -t registry.heroku.com/beautiful-web-site/web .
       - name: docker push
-        run : docker push registry.heroku.com/beautiful-web-site/web .
+        run : docker push registry.heroku.com/beautiful-web-site/web
       - name: Release
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
