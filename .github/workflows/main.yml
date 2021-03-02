@@ -14,14 +14,18 @@ jobs:
         env :
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run : heroku container:login 
-      - name: build and push
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-        run:  heroku container:push -a beautiful-web-site web
+      - name: docker build
+        run : docker build -t registry.heroku.com/beautiful-web-site/web .
+      - name: docker push
+        run : docker push registry.heroku.com/beautiful-web-site/web .
       - name: Release
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run:  heroku container:release -a beautiful-web-site web
+      - name: Open app
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run:  heroku open -a beautiful-web-site
 
 
      
