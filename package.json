@@ -1,6 +1,6 @@
 {
   "name": "beautiful-web-site",
-  "homepage": ".",
+  "homepage": "https://beautiful-web-site.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
