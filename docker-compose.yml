@@ -1,6 +1,6 @@
 version: "2"
 services:
-  nginx-react-bidul:
+  nginx-react:
     container_name: ngixreactapp
     build:
       context: .

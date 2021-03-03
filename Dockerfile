@@ -6,4 +6,4 @@ WORKDIR /app
 RUN npm i -g serve 
 RUN npm i
 RUN npm run build
-CMD serve -p $PORT -s dist
+CMD serve -p $PORT -s build
