@@ -34,16 +34,16 @@ function MenuApp() {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
   const updateMenu = (pathname) => {
-    let x1 = "0vw",
-      x2 = "9.1vw";
+    let x1 = "0",
+      x2 = "156";
     switch (pathname) {
       case "/services":
-        x1 = "9.3vw";
-        x2 = "18.5vw";
+        x1 = "158";
+        x2 = "314";
         break;
       case "/products":
-        x1 = "18.8vw";
-        x2 = "27.9vw";
+        x1 = "316";
+        x2 = "472";
         break;
       default:
         break;

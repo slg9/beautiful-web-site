@@ -12,12 +12,12 @@ function Body() {
  
 
   useEffect(() => {
-    window.scrollTo(1500,0);
+    window.scrollTo(0,0);
   }, [])
   return (
     <div className="body">
       <Panel
-        title="Bienvenue sur mon super site !"
+        title="Bienvenue!"
         subtitle=""
         //button1={{ name: "GET STARTED" }}
         button2={{ name: "VOIR VIDEO" }}

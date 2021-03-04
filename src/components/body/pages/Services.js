@@ -18,7 +18,7 @@ function Services() {
     }
   }, [controls, inView]);
   useEffect(() => {
-    window.scrollTo(1500,0);
+    window.scrollTo(0,0);
   }, [])
   return (
     <div className="body">

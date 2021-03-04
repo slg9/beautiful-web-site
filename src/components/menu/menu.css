@@ -29,14 +29,16 @@
 .right {
   display: flex;
   flex: 0.4;
+  max-width: 715px;
+  min-width: 715px;
   flex-direction: column;
-  
+ 
 }
 .menu__tile{
   display: flex;
-  justify-content: space-around;
   padding-right: 100px;
   min-width: 450px;
+  
 }
 
 .item {
@@ -46,7 +48,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
 }
 .item:hover {
   font-size: 1.05em;
@@ -56,6 +57,7 @@
 .sign {
   display: flex;
   align-items: center;
+  margin-left: 50px;
 }
 .left__responsive,
 .right__responsive {
