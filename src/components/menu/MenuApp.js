@@ -13,6 +13,7 @@ import "./menu.css";
 
 function MenuApp() {
   const [isResponsive, setIsResponsive] = useState(false);
+  const [prevSvgX,setPrevSvgX]=useState({x1:0,x2:156});
   const history = useHistory();
   const control = useAnimation();
   const { scrollYProgress } = useViewportScroll();
@@ -23,7 +24,7 @@ function MenuApp() {
   };
 
   const animation = {
-    scale: { scale: 1.05, transition: { stiffness: 10 } },
+    scale: { scale: 1.05 },
   };
 
   const animation2 = {
@@ -34,24 +35,28 @@ function MenuApp() {
     scale: { scale: 1.1, transition: { damping: 10 } },
   };
   const updateMenu = (pathname) => {
-    let x1 = "0",
-      x2 = "156";
+    let x1 = 0,
+      x2 = 156;
     switch (pathname) {
       case "/services":
-        x1 = "158";
-        x2 = "314";
+        x1 = 158;
+        x2 = 314;
         break;
       case "/products":
-        x1 = "316";
-        x2 = "472";
+        x1 = 316;
+        x2 = 472;
         break;
       default:
         break;
     }
-    control.start({ scale: 1, opacity: [0.5, 1], x1, x2 ,transition:{delay:0.2}});
+
+    control.start({ scale: [1.1,1],x1:[prevSvgX.x1,x1],x2:[prevSvgX.x2,x2] ,transition:{type:"spring",duration:0.5}});
+    setPrevSvgX({x1,x2});
   };
   useEffect(() => {
     updateMenu(history.location.pathname);
+    console.log("bug");
+    console.log(prevSvgX);
   }, []);
 
   useEffect(() => {
@@ -194,7 +199,7 @@ function MenuApp() {
                 y2="1"
                 style={{ stroke: "white", strokeWidth: "2" }}
                 animate={control}
-                variants={animation}
+         
               />
             </svg>
           </div>
@@ -227,7 +232,7 @@ function MenuApp() {
           <ExpandLess  />
         </IconButton>
       </motion.div>
-      coucou
+
     </div>
   );
 }

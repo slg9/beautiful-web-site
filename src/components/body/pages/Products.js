@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Panel from "../Panel";
-import Cards from "../Cards";
+import Panel from "../elements/Panel";
+import Cards from "../elements/Cards";
 import { Grid } from "@material-ui/core";
 import {
   motion,
