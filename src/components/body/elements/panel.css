@@ -10,6 +10,7 @@
   background-size: cover;
   background-repeat: "no-repeat";
   justify-content: center;
+  background-color: black;
 }
 .title {
   display: flex;
@@ -37,6 +38,7 @@
   width: 110%;
   height: 110%;
   margin-left: -5%;
+
 }
 
 @media screen and (max-width: 900px) {

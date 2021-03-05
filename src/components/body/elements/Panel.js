@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { PlayCircleOutline } from "@material-ui/icons";
 import {
@@ -7,20 +7,23 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
-import ContentVideo from "../pages/ContentVideo"
+import ContentVideo from "../pages/ContentVideo";
 import "./panel.css";
 function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
-  const [isOpen,setIsOpen] = useState(false);
+ 
+  const [isOpen, setIsOpen] = useState(false);
   const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1.2]);
-
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1]);
   const smoothScale = useSpring(scale, { duration: 0.5 });
   return (
     <div className="panel__container">
       {/* <motion.div className="panel" style={{ scale:smoothScale,backgroundImage: `url(${imageURL})` }}> */}
       <motion.div
         className="panel"
-        style={{ scale: smoothScale, backgroundImage: `url(${imageURL})` }}
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.1 }}
+        style={{ scale: !videoURL && smoothScale, backgroundImage: `url(${imageURL})` }}
+        transition={{ duration: 0.5 }}
       >
         {videoURL && (
           /*
@@ -42,11 +45,11 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
               width: "100%",
               height: "100%",
               
+              
             }}
           >
             <iframe
               src={`${videoURL}&mute=1&controls=0`}
- 
               className="video__frame"
               frameborder="0"
               allow="loop;muted;autoplay; fullscreen; picture-in-picture"
@@ -100,7 +103,9 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
                   variant="contained"
                   style={{ backgroundColor: "white" }}
                   endIcon={<PlayCircleOutline />}
-                  onClick={()=>{setIsOpen(true)}}
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
                 >
                   {button2.name}
                 </Button>
@@ -109,12 +114,7 @@ function Panel({ title, subtitle, button1, button2, imageURL, videoURL }) {
           </motion.div>
         </div>
       </motion.div>
-      {isOpen && (
-        <ContentVideo
-          videoURL={videoURL}
-          setIsOpen={setIsOpen}
-        />
-      )}
+      {isOpen && <ContentVideo videoURL={videoURL} setIsOpen={setIsOpen} />}
     </div>
   );
 }
