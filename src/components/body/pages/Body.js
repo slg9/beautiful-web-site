@@ -10,10 +10,7 @@ import "./body.css";
 
 function Body() {
  
-  
-  useEffect(() => {
-    window.scrollTo(0,0);
-  }, [])
+ 
   return (
     <div className="body">
       <Panel

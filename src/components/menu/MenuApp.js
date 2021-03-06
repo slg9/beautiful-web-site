@@ -12,7 +12,7 @@ import {
 import "./menu.css";
 
 function MenuApp() {
-  const [isResponsive, setIsResponsive] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
   const [prevSvgX,setPrevSvgX]=useState({x1:0,x2:156});
   const history = useHistory();
   const control = useAnimation();
@@ -20,7 +20,7 @@ function MenuApp() {
   const visible = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
   const smoothVisible = useSpring(visible,{type:"spring",stiffness:400,damping:40});
   const onResponsive = () => {
-    setIsResponsive(!isResponsive);
+    setDisplayMenu(!displayMenu);
   };
 
   const animation = {
@@ -65,13 +65,18 @@ function MenuApp() {
     });
   }, [history.location]);
 
+  const goTo =(location)=>{
+    window.scrollTo(0,0);
+    history.push(location);
+  }
+
   return (
     <div className="menu__container">
       <motion.div
         className="menuresponsive"
         initial={false}
         variants={animation2}
-        animate={isResponsive ? "open" : "closed"}
+        animate={displayMenu ? "open" : "closed"}
       >
         <div className="containerResponsive">
           <motion.div
@@ -79,8 +84,8 @@ function MenuApp() {
             variants={scale}
             whileHover="scale"
             onClick={() => {
-              history.push("/");
-              setIsResponsive(false);
+              goTo("/");
+              setDisplayMenu(false);
             }}
           >
             HOME
@@ -90,8 +95,8 @@ function MenuApp() {
             variants={scale}
             whileHover="scale"
             onClick={() => {
-              history.push("/services");
-              setIsResponsive(false);
+              goTo("/services");
+              setDisplayMenu(false);
             }}
           >
             SERVICE
@@ -101,8 +106,8 @@ function MenuApp() {
             variants={scale}
             whileHover="scale"
             onClick={() => {
-              history.push("/products");
-              setIsResponsive(false);
+              goTo("/products");
+              setDisplayMenu(false);
             }}
           >
             PRODUCTS
@@ -149,7 +154,7 @@ function MenuApp() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               onClick={() => {
-                history.push("/");
+                goTo("/");
               }}
             >
               HOME
@@ -162,7 +167,7 @@ function MenuApp() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               onClick={() => {
-                history.push("/services");
+                goTo("/services");
               }}
             >
               SERVICES
@@ -174,7 +179,7 @@ function MenuApp() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               onClick={() => {
-                history.push("/products");
+                goTo("/products");
               }}
             >
               PRODUCTS
@@ -213,7 +218,7 @@ function MenuApp() {
             animate={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {isResponsive ? (
+            {displayMenu ? (
               <Close fontSize="large" cursor="pointer" />
             ) : (
               <Menu cursor="pointer" fontSize="large" />
