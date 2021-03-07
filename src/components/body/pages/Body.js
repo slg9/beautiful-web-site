@@ -18,8 +18,8 @@ function Body() {
         subtitle=""
         //button1={{ name: "GET STARTED" }}
         button2={{ name: "VOIR VIDEO" }}
-        imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
-        //videoURL="https://www.youtube.com/embed/BHACKCNDMW8?autoplay=1&showinfo=0&autohide=1&start=5"
+        //imageURL="https://cdn.pixabay.com/photo/2015/11/07/11/02/milky-way-1030765_960_720.jpg"
+        videoURL="https://www.youtube.com/embed/BHACKCNDMW8?autoplay=1&showinfo=0&autohide=1&start=6"
      />
       <div className="body__container">
         <div className="content">
